@@ -22,7 +22,7 @@ class BankAccount {
         });
     }
 
-    tarik(amount) {
+    withdraw(amount) {
         console.log(`Proses penarikan Rp ${amount.toLocaleString("id-ID")}...`);
         return new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -38,8 +38,7 @@ class BankAccount {
     }
 }
 
-// Contoh penggunaan
 const rekeningSaya = new BankAccount(10000);
 rekeningSaya.tampilkanSaldo();
 rekeningSaya.deposit(5000).then(console.log).catch(console.error);
-rekeningSaya.tarik(3000).then(console.log).catch(console.error);
+rekeningSaya.withdraw(3000).then(console.log).catch(console.error);
