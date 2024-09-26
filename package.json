@@ -1,0 +1,19 @@
+{
+  "name": "challenge-2",
+  "version": "1.0.0",
+  "description": "challenge 2 ",
+  "main": "banking_system.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuhammadAmirShafwan/Basic-Banking-System.git"
+  },
+  "author": "Muhammad Amir Shafwan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuhammadAmirShafwan/Basic-Banking-System/issues"
+  },
+  "homepage": "https://github.com/MuhammadAmirShafwan/Basic-Banking-System#readme"
+}
