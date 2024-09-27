@@ -48,10 +48,10 @@ window.onload = function () {
     dompetKu.tampilkanSaldo(); // Menampilkan saldo awal saat halaman dimuat
 };
 
-function tambahSaldoHandler() {
+function depositHandler() {
     dompetKu.tambahSaldo();
 }
 
-function kurangiSaldoHandler() {
+function withdrawHandler() {
     dompetKu.kurangiSaldo();
 }

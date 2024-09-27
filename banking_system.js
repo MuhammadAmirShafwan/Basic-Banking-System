@@ -1,10 +1,11 @@
 class BankAccount {
     constructor(saldoAwal) {
         this.saldo = saldoAwal;
+        this.updateSaldoDisplay();
     }
 
-    tampilkanSaldo() {
-        console.log(`Saldo saat ini: Rp ${this.saldo.toLocaleString("id-ID")}`);
+    updateSaldoDisplay() {
+        document.getElementById("saldo-display").innerText = `Saldo saat ini: Rp ${this.saldo.toLocaleString("id-ID")}`;
     }
 
     deposit(amount) {
@@ -13,10 +14,10 @@ class BankAccount {
             setTimeout(() => {
                 if (amount > 0) {
                     this.saldo += amount;
-                    // this.tampilkanSaldo();
+                    this.updateSaldoDisplay();
                     resolve(`Deposit berhasil! Saldo baru: Rp ${this.saldo.toLocaleString("id-ID")}`);
                 } else {
-                    reject("amount deposit tidak valid.");
+                    reject("Nominal deposit tidak valid.");
                 }
             }, 5000); // Simulasi delay 5 detik
         });
@@ -28,17 +29,27 @@ class BankAccount {
             setTimeout(() => {
                 if (amount > 0 && amount <= this.saldo) {
                     this.saldo -= amount;
-                    // this.tampilkanSaldo();
+                    this.updateSaldoDisplay();
                     resolve(`Penarikan berhasil! Saldo baru: Rp ${this.saldo.toLocaleString("id-ID")}`);
                 } else {
-                    reject("amount tidak valid atau saldo tidak mencukupi.");
+                    reject("Nominal tidak valid atau saldo tidak mencukupi.");
                 }
             }, 5000); // Simulasi delay 5 detik
         });
     }
 }
 
+// Membuat instance rekening
 const rekeningSaya = new BankAccount(10000);
-rekeningSaya.tampilkanSaldo();
-rekeningSaya.deposit(5000).then(console.log).catch(console.error);
-rekeningSaya.withdraw(3000).then(console.log).catch(console.error);
+
+// Function untuk menangani deposit dari input prompt
+function depositHandler() {
+    const amount = parseInt(prompt("Masukkan nominal deposit:"));
+    rekeningSaya.deposit(amount).then(alert).catch(alert);
+}
+
+// Function untuk menangani penarikan dari input prompt
+function withdrawHandler() {
+    const amount = parseInt(prompt("Masukkan nominal penarikan:"));
+    rekeningSaya.withdraw(amount).then(alert).catch(alert);
+}
